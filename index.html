@@ -3,35 +3,65 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content=" FILL ME IN ">
-    <meta name="author" content=" FILL ME IN ">
+    <meta name="description" content="My Awesome Portfolio !">
+    <meta name="author" content="Thomas Toledo">
     <title>Cameron Pittman: Portfolio</title>
 
+    <style>
+      html {
+        font-size: 100%;
+        overflow-y: scroll;
+        -webkit-tap-highlight-color: rgba(0,0,0,0);
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: none;
+      }
+      body { margin: 0; font-size: 14px; line-height: 1.61; font-weight: 400; font-family: 'Open Sans', sans-serif; color: #333; }
+      header, footer, .container { max-width: 45em; margin: 0 auto; }
+      .name { font-size:1.5em; font-weight: bold; padding-left: 4em;}
+      .job { font-size: 0.8em;}
+    </style>
     <!-- Hmm, what is the impact of web fonts on speed? Measure it... -->
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <!--<link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">-->
 
     <link href="css/style.css" rel="stylesheet">
-    <link href="css/print.css" rel="stylesheet">
+    <link href="css/print.css" rel="stylesheet" media="print">
 
+    <!-- OK, so it appears that importing font with JS is more performant than with HTML or CSS. 
+    I think it is because it waits to load and paint CSS and then parse the JavaScript, then do an asynchronous request.
+    And, as the request is asynchronous, it is non-blocking. Am I right ? -->
+    <script type="text/javascript">
+      WebFontConfig = {
+        google: { families: [ 'Open+Sans::latin' ] }
+      };
+      (function() {
+        var wf = document.createElement('script');
+        wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+          '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        wf.type = 'text/javascript';
+        wf.async = 'true';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(wf, s);
+      })(); 
+    </script>
     <script>
       (function(w,g){w['GoogleAnalyticsObject']=g;
       w[g]=w[g]||function(){(w[g].q=w[g].q||[]).push(arguments)};w[g].l=1*new Date();})(window,'ga');
 
-      // TODO: replace with your Google Analytics profile ID.
-      ga('create', 'UA-XXXX-Y');
+
+      ga('create', 'UA-33911095-2', 'auto');
       ga('send', 'pageview');
     </script>
-    <script src="http://www.google-analytics.com/analytics.js"></script>
+    <script defer src="http://www.google-analytics.com/analytics.js"></script>
     <script async src="js/perfmatters.js"></script>
   </head>
 
   <body>
     <header>
-      <a href="/"><img src="img/profilepic.jpg"></a>
-      <p>Cameron Pittman<br><span>Course Developer</span></p>
+      <a href="/"><img class="header-img" src="img/profilepic.jpg"></a>
+      <p class="name">Cameron Pittman<br><span class="job">Course Developer</span></p>
     </header>
 
-    <div class="container">
+    <div class="container" >
       <div class="hero">
         <strong>I love web development!</strong> This is a template for a simple portfolio. I decided to use it to showcase a few Udacity courses I've taken and some teaching work, but you can use it to showcase any kind of project that you want the world to see :) <br> Contact me: me@email.com
       </div>
