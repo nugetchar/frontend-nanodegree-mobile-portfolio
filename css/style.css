@@ -1,34 +1,17 @@
-
-
-a { color: #12C; }
-
-
-pre, code { font-family: monospace, monospace; font-size: 1em; }
-ul, ol { margin: 1em 0; padding: 0 0 0 20px; }
-img { max-width: 100%; }
-
-header { padding: 0 0.5em; color: #C90B0B; }
-.header-img { border-radius: 40px; float: left; }
-
-
-.hero { padding: 2em; background-color: #f8f8f8; font-size:1.2em;
-  border-bottom: 1px solid #ccc;
-  border-top: 1px solid #ccc;
-}
-
-.content { padding: 1em 1em; }
-.content li { list-style-type: none; font-size: 1.1em;}
-li img { float:left; padding-right: 1em; }
-li p { font-size: 0.9em; font-style: italic; }
-
-footer {
-  padding: 0 0.5em;
-  border-top: 1px solid #ccc;
-}
-footer span { float: right; font-style: italic; }
-
-/* Smartphones (portrait) */
-@media only screen and (max-width: 480px) {
-  body { font-size: 12px;}
-  .name { padding-left: 4.5em;}
+a{color:#12C;}
+body{font-size: 14px;}
+.name{padding-left: 4em;}
+pre, code{font-family:monospace, monospace;font-size:1em;}
+ul, ol{margin:1em 0;padding:0 0 0 20px;}
+img{max-width:100%;}
+header, footer{padding:0 0.5em;}
+header{color:#C90B0B;}
+.header-img{border-radius:40px;float:left;}
+.content li{list-style-type:none;font-size:1.1em;}
+li img{float:left;padding-right:1em;}
+li p{font-size:0.9em;font-style:italic;}
+footer{border-top:1px solid #ccc;}
+footer span{float:right;font-style:italic;}
+@media only screen and (max-width:480px){body{font-size:12px;}
+.name{padding-left:4.5em;}
 }

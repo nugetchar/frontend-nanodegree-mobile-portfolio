@@ -15,16 +15,25 @@
         -ms-text-size-adjust: 100%;
         -webkit-text-size-adjust: none;
       }
-      body { margin: 0; font-size: 14px; line-height: 1.61; font-weight: 400; font-family: 'Open Sans', sans-serif; color: #333; }
+      body { margin: 0;  line-height: 1.61; font-weight: 400; font-family: 'Open Sans', sans-serif; color: #333; }
       header, footer, .container { max-width: 45em; margin: 0 auto; }
-      .name { font-size:1.5em; font-weight: bold; padding-left: 4em;}
+      .name { font-size:1.5em; font-weight: bold;}
       .job { font-size: 0.8em;}
+
+      .hero { padding: 2em; background-color: #f8f8f8; font-size:1.2em;
+        border-bottom: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+      }
+
+      .content { padding: 1em 1em; }
+      
     </style>
     <!-- Hmm, what is the impact of web fonts on speed? Measure it... -->
     <!--<link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">-->
 
     <link href="css/style.css" rel="stylesheet">
-    <link href="css/print.css" rel="stylesheet" media="print">
+    <link href="css/print.css" rel="stylesheet" media="print">*
+
 
     <!-- OK, so it appears that importing font with JS is more performant than with HTML or CSS. 
     I think it is because it waits to load and paint CSS and then parse the JavaScript, then do an asynchronous request.
