@@ -7,7 +7,12 @@
     <meta name="author" content="Thomas Toledo">
     <title>Cameron Pittman: Portfolio</title>
 
+    <!-- Hmm, what is the impact of web fonts on speed? Measure it... -->
+    <!--<link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">-->
+    <link href="css/print.css" rel="stylesheet" media="print">*
+
     <style>
+      /*@import url(https://fonts.googleapis.com/css?family=Open+Sans);*/
       html {
         font-size: 100%;
         overflow-y: scroll;
@@ -26,18 +31,27 @@
       }
 
       .content { padding: 1em 1em; }
-      
+
+      a{color:#12C;}
+      body{font-size: 14px;}
+      .name{padding-left: 4em;}
+      pre, code{font-family:monospace, monospace;font-size:1em;}
+      ul, ol{margin:1em 0;padding:0 0 0 20px;}
+      img{max-width:100%;}
+      header, footer{padding:0 0.5em;}
+      header{color:#C90B0B;}
+      .header-img{border-radius:40px;float:left;}
+      .content li{list-style-type:none;font-size:1.1em;}
+      li img{float:left;padding-right:1em;}
+      li p{font-size:0.9em;font-style:italic;}
+      footer{border-top:1px solid #ccc;}
+      footer span{float:right;font-style:italic;}
+      @media only screen and (max-width:480px){body{font-size:12px;}
+      .name{padding-left:4.5em;}
+      }
+
     </style>
-    <!-- Hmm, what is the impact of web fonts on speed? Measure it... -->
-    <!--<link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">-->
 
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/print.css" rel="stylesheet" media="print">*
-
-
-    <!-- OK, so it appears that importing font with JS is more performant than with HTML or CSS. 
-    I think it is because it waits to load and paint CSS and then parse the JavaScript, then do an asynchronous request.
-    And, as the request is asynchronous, it is non-blocking. Am I right ? -->
     <script type="text/javascript">
       WebFontConfig = {
         google: { families: [ 'Open+Sans::latin' ] }
@@ -50,9 +64,8 @@
         wf.async = 'true';
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(wf, s);
-      })(); 
-    </script>
-    <script>
+      })();
+
       (function(w,g){w['GoogleAnalyticsObject']=g;
       w[g]=w[g]||function(){(w[g].q=w[g].q||[]).push(arguments)};w[g].l=1*new Date();})(window,'ga');
 
@@ -78,19 +91,19 @@
       <div class="content">
         <ul>
           <li>
-            <img src="https://lh4.ggpht.com/kJEnfqhPvtm4m3EneSZ4fWYGS8lW4YNhEjk6zPkyrQaBUHc-2Y_ElDic99NHI0h-UBLXVbRCjFybFvrWxdk=s100">
+            <img src="./img/2048.jpg">
             <a href="project-2048.html">Build Your Own 2048!</a>
             <p>I made my own version of 2048. How cool is that!?</p>
           </li>
 
           <li>
-            <img src="https://lh6.ggpht.com/f_0W8h__3G99CWTjnMjD8BUKm7yp2-wJyApLtTwFoFtlal2ULf_JgHIsOQq2NiYfKOdMlXlMHDKNo5XVZLs=s100">
+            <img src="./img/udacity.jpg">
             <a href="project-webperf.html">Website Performance Optimization</a>
             <p>Hey... this class looks familiar.</p>
           </li>
 
           <li>
-            <img src="https://lh5.ggpht.com/IKdCmTWn8a2nMhlwMYzryvzRN5CUZAOBr4tDrEAbszV7TIFe9pRAInA4kkYcgTXwrifJsBEsq1agTueuu-g=s100">
+            <img src="./img/mobile-web-dev.jpg">
             <a href="project-mobile.html">Mobile Web Development</a>
             <p>Making mobile apps isn't so hard after all.</p>
           </li>
