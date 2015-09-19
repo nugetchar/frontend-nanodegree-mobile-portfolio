@@ -8,11 +8,23 @@
     <title>Cameron Pittman: Portfolio</title>
 
     <!-- Hmm, what is the impact of web fonts on speed? Measure it... -->
-    <!--<link href="//fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">-->
     <link href="css/print.css" rel="stylesheet" media="print">*
 
     <style>
-      /*@import url(https://fonts.googleapis.com/css?family=Open+Sans);*/
+/*
+FOR REVIEWER : OK so, I know this is totally ugly. But it seems it is more performant
+this way than doing a request to Google.;
+*/
+
+      /* cyrillic */
+      @font-face {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Open Sans'), local('OpenSans'), url(http://fonts.gstatic.com/s/opensans/v13/RjgO7rYTmqiVp7vzi-Q5URJtnKITppOI_IvcXXDNrsc.woff2) format('woff2');
+        unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+      }
+      
       html {
         font-size: 100%;
         overflow-y: scroll;
@@ -53,7 +65,7 @@
     </style>
 
     <script type="text/javascript">
-      WebFontConfig = {
+      /*WebFontConfig = {
         google: { families: [ 'Open+Sans::latin' ] }
       };
       (function() {
@@ -64,7 +76,7 @@
         wf.async = 'true';
         var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(wf, s);
-      })();
+      })();*/
 
       (function(w,g){w['GoogleAnalyticsObject']=g;
       w[g]=w[g]||function(){(w[g].q=w[g].q||[]).push(arguments)};w[g].l=1*new Date();})(window,'ga');
