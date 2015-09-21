@@ -1,3 +1,4 @@
+'use strict';
 /*
 Welcome to the 60fps project! Your goal is to make Cam's Pizzeria website run
 jank-free at 60 frames per second.
@@ -445,7 +446,7 @@ var resizePizzas = function(size) {
     
     var pizzasContained = document.getElementsByClassName('randomPizzaContainer');
     
-    for (var i = 0; i < pizzasContained.length; i++) {
+    for (var i = 0, len = pizzasContained.length; i < len; i++) {
       pizzasContained[i].style.width = newwidth + '%';
     }
   }
@@ -463,6 +464,8 @@ window.performance.mark('mark_start_generating'); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
 
+//TO REVIEWER : Here, we use getElementById instead of querySelector because
+//it's more efficient
 var pizzasDiv = document.getElementById('randomPizzas');
 for (var i = 2; i < 100; i++) {
   pizzasDiv.appendChild(pizzaElementGenerator(i));
@@ -498,28 +501,24 @@ function updatePositions() {
 
   var items = document.getElementsByClassName('mover');
 
-  /**
-  NOTE FOR REVIEWER : you gave me a nicktip which was very efficient, but I
-  do not understand how your code does the same thing ? Where is the '1250' value ?
-  Why '* 100' for the first loop ?
-  Also, how could you find this ? I mean, I don't understand 95% of the entire code, so how would I
-  be able to do the same ?
-  */
+
   /*for (var i = 0; i < items.length; i++) {
     var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }*/
 
-  //Here's your niptick
+  //Here's the optimization
   var phases = [];
-  var scrollTop = document.body.scrollTop;
+  var scrollTop = document.body.scrollTop / 1250;
 
   for(var i=0; i<5; ++i){
     phases.push(Math.sin(scrollTop + i) * 100);
   }
 
   for (var i = 0, max = items.length; i < max; i++) {
-    items[i].style['transform'] = 'translateX(' + (items[i].basicLeft + phases[i%5]) + 'px)';
+    // items[i].style['transform'] = 'translateX(' + (items[i].basicLeft + phases[i%5]) + 'px)';
+    //changed to : 
+    items[i].style['transform'] = 'translateX(' +  phases[i%5] + 'px)';
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -540,13 +539,20 @@ document.addEventListener('DOMContentLoaded', function() {
   var nbPizzas = (window.innerHeight/250) * 8;
   var cols = 8;
   var s = 256;
+
+  //elem var declaration outside the loop
+  var  elem;
+  //movingPizzas created to avoid redundant call
+  var movingPizzas = document.getElementById('movingPizzas1');
   for (var i = 0; i < nbPizzas; i++) {
-    var elem = document.createElement('img');
+    elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = 'images/pizza.png';
-    elem.basicLeft = (i % cols) * s;
+    //elem.basicLeft = (i % cols) * s; changed to :
+    elem.style.left = i % cols * s + 'px';
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.getElementById('movingPizzas1').appendChild(elem);
+    //document.getElementById('movingPizzas1').appendChild(elem);
+    movingPizzas.appendChild(elem);
   }
   updatePositions();
 });
