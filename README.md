@@ -1,5 +1,17 @@
 Steps to launch the app: 
+go to the "dist" folder
 launch index.html
+
+Steps to dev the app:
+in a terminal, type the following:
+
+go to the "dev" folder and edit any file you want.
+
+  ``` bash
+  $> cd /path/to/your-project-folder
+  $> npm install --save-dev
+  $> gulp
+  ```
 
 To see the steps for optimization, go at the end of the file.
 
@@ -92,14 +104,16 @@ Optimizations performed for index.html :
 - asynced perfmatters.js
 
 Optimizations for both index.html and pizza.html :
-- minification of images with gulp. To run it, you need gulp installed. Once it is done, do the following : 
+- images have been optimized with compressor.io since no gulp package seemed to do a correct work
+- minification of css and js with gulp. You need ton install some packages : 
 
   ``` bash
   $> cd /path/to/your-project-folder
+  $> npm install //or npm install --save-dev
   $> gulp
   ```
 
-Optimized images will go to /path/to/your-project-folder/gulpimg. You then will be allowed to choose between images in the "images" folder and images in the "imgmin" folder.
+Production application will go to the "dist" folder.
 
 Optimizations for pizza.html :
 In style.css : 
