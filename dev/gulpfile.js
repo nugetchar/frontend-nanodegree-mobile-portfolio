@@ -8,7 +8,7 @@ var gulp = require('gulp'),
 gulp.task('html', function () {
     var assets = useref.assets();
  
-    return gulp.src('./**/*.html')
+    return gulp.src(['./**/*.html', './**/*.png', './**/*.jpg'])
         .pipe(assets)
         .pipe(gulpif('./**/*.js', uglify()))
         .pipe(gulpif('./**/*.css', minifyCss()))
