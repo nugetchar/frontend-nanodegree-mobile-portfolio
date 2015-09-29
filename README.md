@@ -2,6 +2,8 @@ Steps to launch the app:
 go to the "dist" folder
 launch index.html
 
+The app documentation can be found in "dist/documentation"
+
 Steps to dev the app:
 in a terminal, type the following:
 

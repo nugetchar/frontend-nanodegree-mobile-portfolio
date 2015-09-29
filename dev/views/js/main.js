@@ -19,6 +19,11 @@ cameron *at* udacity *dot* com
 
 // As you may have realized, this website randomly generates pizzas.
 // Here are arrays of all possible pizza ingredients.
+/**
+ * [pizzaIngredients: an object storing many arrays]
+ * @type {Object}
+ */
+
 var pizzaIngredients = {};
 pizzaIngredients.meats = [
   'Pepperoni',
@@ -143,13 +148,22 @@ pizzaIngredients.crusts = [
   'Stuffed Crust'
 ];
 
-// Name generator pulled from http://saturdaykid.com/usernames/generator.html
-// Capitalizes first letter of each word
+
+/**
+ * @brief Name generator pulled from http://saturdaykid.com/usernames/generator.html
+ * Capitalizes first letter of each word
+ * @return {string}
+ */
 String.prototype.capitalize = function() {
   return this.charAt(0).toUpperCase() + this.slice(1);
 };
 
-// Pulls adjective out of array using random number sent from generator
+
+/**
+ * @brief Pulls adjective out of array using random number sent from generator
+ * @param  {string}
+ * @return {Array<string>}
+ */
 function getAdj(x){
   switch(x) {
     case 'dark': 
@@ -213,7 +227,11 @@ function getAdj(x){
   };
 };
 
-// Pulls noun out of array using random number sent from generator
+/**
+ * @brief Pulls noun out of array using random number sent from generator
+ * @param  {string}
+ * @return {Array<string>}
+ */
 function getNoun(y) {
   switch(y) {
     case 'animals': 
@@ -283,10 +301,25 @@ function getNoun(y) {
   }; 
 };
 
+/**
+ * [adjectives: array of adjectives]
+ * @type {Array}
+ */
 var adjectives = ['dark', 'color', 'whimsical', 'shiny', 'noise', 'apocalyptic', 'insulting', 'praise', 'scientific'];  // types of adjectives for pizza titles
+
+/**
+ * [nouns: array of nouns]
+ * @type {Array}
+ */
 var nouns = ['animals', 'everyday', 'fantasy', 'gross', 'horror', 'jewelry', 'places', 'scifi'];                        // types of nouns for pizza titles
 
-// Generates random numbers for getAdj and getNoun functions and returns a new pizza name
+// 
+/**
+ * @brief Generates random numbers for getAdj and getNoun functions and returns a new pizza name
+ * @param  {string}
+ * @param  {string}
+ * @return {a name: string}
+ */
 function generator(adj, noun) {
   var adjectives = getAdj(adj);
   var nouns = getNoun(noun);
@@ -296,45 +329,74 @@ function generator(adj, noun) {
   return name;
 };
 
-// Chooses random adjective and random noun
+/**
+ * @brief Chooses random adjective and random noun
+ * @return {string}
+ */
 function randomName() {
   var randomNumberAdj = parseInt(Math.random() * adjectives.length);
   var randomNumberNoun = parseInt(Math.random() * nouns.length);
   return generator(adjectives[randomNumberAdj], nouns[randomNumberNoun]);
 };
 
-// These functions return a string of a random ingredient from each respective category of ingredients.
+/**
+ * @brief Generate a string of random meat and returns it
+ * @return {string}
+ */
 var selectRandomMeat = function() {
   var randomMeat = pizzaIngredients.meats[Math.floor((Math.random() * pizzaIngredients.meats.length))];
   return randomMeat;
 }
 
+/**
+ * @brief Generate a string of random non-meat ingredient and returns it
+ * @return {string}
+ */
 var selectRandomNonMeat = function() {
   var randomNonMeat = pizzaIngredients.nonMeats[Math.floor((Math.random() * pizzaIngredients.nonMeats.length))];
   return randomNonMeat;
 }
 
+/**
+ * @brief Generate a string of random cheese and returns it
+ * @return {string}
+ */
 var selectRandomCheese = function() {
   var randomCheese = pizzaIngredients.cheeses[Math.floor((Math.random() * pizzaIngredients.cheeses.length))];
   return randomCheese;
 }
 
+/**
+ * @brief Generate a string of random sauce and returns it
+ * @return {string}
+ */
 var selectRandomSauce = function() {
   var randomSauce = pizzaIngredients.sauces[Math.floor((Math.random() * pizzaIngredients.sauces.length))];
   return randomSauce;
 }
 
+/**
+ * @brief Generate a string of random crust and returns it
+ * @return {string}
+ */
 var selectRandomCrust = function() {
   var randomCrust = pizzaIngredients.crusts[Math.floor((Math.random() * pizzaIngredients.crusts.length))];
   return randomCrust;
 }
 
-
+/**
+ * @brief Create a list item with the name of an ingredient
+ * @param {string}
+ * @return {string}
+ */
 var ingredientItemizer = function(string) {
   return '<li>' + string + '</li>';
 }
 
-// Returns a string with random pizza ingredients nested inside <li> tags
+/**
+ * @brief Returns a string with random pizza ingredients nested inside <li> tags
+ * @return {string}
+ */
 var makeRandomPizza = function() {
   var pizza = '';
 
@@ -360,7 +422,11 @@ var makeRandomPizza = function() {
   return pizza;
 }
 
-// returns a DOM element for each pizza
+/**
+ * @brief returns a DOM element for each pizza
+ * @param  {number}
+ * @return {Object}
+ */
 var pizzaElementGenerator = function(i) {
   var pizzaContainer,             // contains pizza title, image and list of ingredients
       pizzaImageContainer,        // contains the pizza image
@@ -400,11 +466,17 @@ var pizzaElementGenerator = function(i) {
   return pizzaContainer;
 }
 
-// resizePizzas(size) is called when the slider in the 'Our Pizzas' section of the website moves.
+/**
+ * @brief resizePizzas(size) is called when the slider in the 'Our Pizzas' section of the website moves.
+ * @param  {string}
+ */
 var resizePizzas = function(size) { 
   window.performance.mark('mark_start_resize');   // User Timing API function
 
-  // Changes the value for the size of the pizza above the slider
+  /**
+   * @brief Changes the slider label
+   * @param  {string}
+   */
   function changeSliderLabel(size) {
     switch(size) {
       case '1':
@@ -426,7 +498,10 @@ var resizePizzas = function(size) {
 
   
 
-  // Iterates through pizza elements on the page and changes their widths
+  /**
+   * @brief Iterates through pizza elements on the page and changes their widths
+   * @param  {string}
+   */
   function changePizzaSizes(size) {
     var newwidth;
     switch(size) {
@@ -481,7 +556,11 @@ console.log('Time to generate pizzas on load: ' + timeToGenerate[0].duration + '
 // Used by updatePositions() to decide when to log the average time per frame
 var frame = 0;
 
-// Logs the average amount of time per 10 frames needed to move the sliding background pizzas on scroll.
+
+/**
+ * @brief Logs the average amount of time per 10 frames needed to move the sliding background pizzas on scroll. 
+ * @param {Array}
+ */
 function logAverageFrame(times) {   // times is the array of User Timing measurements from updatePositions()
   var numberOfEntries = times.length;
   var sum = 0;
@@ -494,7 +573,9 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // The following code for sliding background pizzas was pulled from Ilya's demo found at:
 // https://www.igvita.com/slides/2012/devtools-tips-and-tricks/jank-demo.html
 
-// Moves the sliding background pizzas based on scroll position
+/**
+ * @brief Moves the sliding background pizzas based on scroll position 
+ */
 function updatePositions() {
   frame++;
   window.performance.mark('mark_start_frame');
